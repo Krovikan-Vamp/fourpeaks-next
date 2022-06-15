@@ -1,5 +1,5 @@
 // @ts-ignore
-import useDarkMode from "../utils/useDarkMode.tsx";
+import useDarkMode from "../utils/useDarkMode.ts";
 
 export default function ToggleDM() {
     const [colorTheme, setTheme] = useDarkMode();

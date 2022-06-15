@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
+    "build": "next build && next export && next-image-export-optimizer",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "next": "12.1.6",
+    "next-image-export-optimizer": "^0.10.1",
     "react": "18.1.0",
     "react-dom": "18.1.0"
   },

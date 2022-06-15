@@ -1,15 +1,21 @@
 import Link from 'next/link';
-import Img from 'next/image';
+import Img from 'next-image-export-optimizer';
+// @ts-ignore
+import mainBg from '../public/main-bg.jpg'
+// @ts-ignore
+import cardImg from '../public/main-card.avif'
+// @ts-ignore
+import imageLoader from '../utils/loader.ts';
 
 export const HeroMain = () => {
     return (
         <div className="relative transition-all ease-in">
             <Img
-                src="/../public/main-bg.jpg"
+                src="main-bg.jpg"
                 className="absolute object-cover w-full h-full"
                 layout='fill'
                 alt=""
-            />
+/>
             <div className="relative bg-gray-900 bg-opacity-75 transition-all ease-in">
                 <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
                     <div className="flex flex-col items-center justify-between xl:flex-row">
@@ -22,14 +28,14 @@ export const HeroMain = () => {
                                 With a wide range of urological procedures, providers, and costs we are able to offer the best possible care to our patients.
                             </p>
                             <Link href='/' className=""><a className='inline-flex items-center font-semibold tracking-wider transition-colors duration-200 text-teal-400 hover:text-teal-700'>Learn more</a></Link>
-                                <svg className="inline-block w-3 ml-2 text-teal-400" fill="currentColor" viewBox="0 0 12 12">
-                                    <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
-                                </svg>
+                            <svg className="inline-block w-3 ml-2 text-teal-400" fill="currentColor" viewBox="0 0 12 12">
+                                <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
+                            </svg>
                         </div>
-                        <div className="max-w-md py-4 px-8 bg-gray-100 shadow-lg rounded-lg my-20 dark:bg-gray-800 transition-all ease-in">
+                        <div className="max-w-md py-4 px-8 bg-gray-100 shadow-lg rounded-lg my-20 dark:bg-gray-800 transition-all ease-in hover:shadow-gray-600">
                             <div className="flex justify-center md:justify-end -mt-16">
                                 {/* @ts-ignore */}
-                                <Img className="w-20 h-20 object-cover rounded-full border-2 border-teal-400" height={'100%'} width={'100%'} src="/../public/main-card.avif" />
+                                <Img className="w-20 h-20 object-cover rounded-full border-2 border-teal-400" height={'100%'} width={'100%'} src="main-card.avif" />
                             </div>
                             <div>
                                 <h2 className="text-black dark:text-white text-3xl font-semibold">Hear it for yourself...</h2>
