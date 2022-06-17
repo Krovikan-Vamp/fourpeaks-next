@@ -28,17 +28,6 @@ const Surgeons = () => {
         setLoading(false)
     }, []);
 
-    // const springs = useSprings(
-    //     surgeons.length,
-    //     surgeons.map((item, index) => ()
-
-    //     {
-    //         from: { opacity: 0 },
-    //         to: { opacity: 1 },
-    //         config: { duration: 1000 },
-    //         delay: 1000,
-    //     });
-
     const springs = useSprings(
         surgeons.length,
         surgeons.map((item, index) => ({ from: { opacity: 0, translateY: 100 }, to: { opacity: 1, translateY: 0 }, delay: index * 55 }))
@@ -62,7 +51,7 @@ const Surgeons = () => {
                             <animated.div style={springs[index]} className="p-4 lg:w-1/2 md:w-full rounded-md" key={index}>
                                 <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
                                     {/* @ts-ignore */}
-                                    <img className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-top sm:mb-0 mb-4 lg:rounded-full" alt={surgeon.fields.surgeon.mapValue.fields.name.stringValue} aria-label={surgeon.fields.surgeon.mapValue.fields.name.stringValue} src={lastName !== "devakumar" ? `https://www.academic-urology.com/images/${lastName}-cutout.png` : `https://www.academic-urology.com/images/${lastName}.png`} />
+                                    <Img className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-top sm:mb-0 mb-4 lg:rounded-full" alt={surgeon.fields.surgeon.mapValue.fields.name.stringValue} aria-label={surgeon.fields.surgeon.mapValue.fields.name.stringValue} src={lastName !== "devakumar" ? `https://www.academic-urology.com/images/${lastName}-cutout.png` : `https://www.academic-urology.com/images/${lastName}.png`} />
                                     <div className="flex-grow sm:pl-8">
                                         {/* @ts-ignore */}
                                         <h2 className="title-font font-medium text-lg text-teal-500 dark:text-teal-400 mb-3">{surgeon.fields.surgeon.mapValue.fields.name.stringValue}</h2>

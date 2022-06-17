@@ -1,15 +1,40 @@
-import { animated } from "react-spring";
-import { fadeInSpring } from "../utils/springs.ts";
+import { animated, useTrail } from "react-spring";
+import { useState, useEffect, useRef } from "react";
 
 const Steps = () => {
-    let fadeIn = fadeInSpring()
+    const triggerRef = useRef();
+    const dataRef = useIntersectionObserver(triggerRef, { freezeOnceVisible: true });
+
+    function useIntersectionObserver(elementRef, { threshold = 0, root = null, rootMargin = '0%', freezeOnceVisible = false }) {
+        const [entry, setEntry] = useState();
+        const frozen = entry?.isIntersecting && freezeOnceVisible;
+
+        const updateEntry = ([entry]) => {
+            setEntry(entry);
+        }
+
+        useEffect(() => {
+            const node = elementRef?.current;
+            const hasIOSupport = !!window.IntersectionObserver;
+
+            if (!hasIOSupport || frozen || !node) return;
+            const observerParams = { threshold, root, rootMargin };
+            const observer = new IntersectionObserver(updateEntry, observerParams);
+
+            observer.observe(node);
+
+            return () => observer.disconnect();
+        }, [elementRef, threshold, root, rootMargin, frozen]);
+
+        return entry;
+    }
+
+    const trail = useTrail(4, { from: { opacity: 0, translateY: 100 }, to: { opacity: dataRef?.isIntersecting ? 1 : 0, translateY: dataRef?.isIntersecting ? 0 : 100 } });
 
     return (
         <section className="text-gray-600 body-font dark:text-white dark:bg-gray-800 border-y-4 border-teal-400 bg-gray-100 transition-all ease-linear">
             <div className="container px-5 py-24 mx-auto flex flex-wrap">
-
-
-                <animated.div style={fadeIn} className="flex relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto">
+                <animated.div style={trail[0]} className="flex relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto">
                     <div className="h-full w-6 absolute inset-2 flex items-center justify-center">
                         <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
                     </div>
@@ -26,7 +51,7 @@ const Steps = () => {
                         </div>
                     </div>
                 </animated.div>
-                <animated.div style={fadeIn} className="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
+                <animated.div style={trail[1]} className="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
                     <div className="h-full w-6 absolute inset-2 flex items-center justify-center">
                         <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
                     </div>
@@ -43,7 +68,8 @@ const Steps = () => {
                         </div>
                     </div>
                 </animated.div>
-                <animated.div style={fadeIn} className="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
+
+                <animated.div style={trail[2]} className="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
                     <div className="h-full w-6 absolute inset-2 flex items-center justify-center">
                         <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
                     </div>
@@ -60,7 +86,9 @@ const Steps = () => {
                         </div>
                     </div>
                 </animated.div>
-                <div className="flex relative pb-10 sm:items-center md:w-2/3 mx-auto">
+            <div ref={triggerRef} />
+
+                <animated.div style={trail[2]} className="flex relative pb-10 sm:items-center md:w-2/3 mx-auto">
                     <div className="h-full w-6 absolute inset-2 flex items-center justify-center">
                         <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
                     </div>
@@ -74,7 +102,8 @@ const Steps = () => {
                             <p className="leading-relaxed">VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk bespoke try-hard cliche palo santo offal.</p>
                         </div>
                     </div>
-                </div>
+                </animated.div>
+
             </div>
         </section>
     )

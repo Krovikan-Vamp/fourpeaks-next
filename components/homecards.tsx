@@ -1,6 +1,36 @@
 import Link from "next/link";
+import { useEffect, useState, useRef } from "react";
+import { animated as a, useTrail } from "react-spring";
 
 const HomeCards = () => {
+    const triggerRef = useRef();
+    const dataRef = useIntersectionObserver(triggerRef, { freezeOnceVisible: true });
+
+    function useIntersectionObserver(elementRef, { threshold = 0, root = null, rootMargin = '0%', freezeOnceVisible = false }) {
+        const [entry, setEntry] = useState();
+        const frozen = entry?.isIntersecting && freezeOnceVisible;
+
+        const updateEntry = ([entry]) => {
+            setEntry(entry);
+        }
+
+        useEffect(() => {
+            const node = elementRef?.current;
+            const hasIOSupport = !!window.IntersectionObserver;
+
+            if (!hasIOSupport || frozen || !node) return;
+            const observerParams = { threshold, root, rootMargin };
+            const observer = new IntersectionObserver(updateEntry, observerParams);
+
+            observer.observe(node);
+
+            return () => observer.disconnect();
+        }, [elementRef, threshold, root, rootMargin, frozen]);
+
+        return entry;
+    }
+
+    const trail = useTrail(6, { from: { opacity: 0, translateX: Math.random() * 100 }, to: { opacity: dataRef?.isIntersecting ? 1 : 0, translateX: dataRef?.isIntersecting ? 0 : Math.random() * 100 } });
 
     return (
         <section className="dark:bg-gray-700  dark:text-white text-gray-600 body-font transition-all ease-in">
@@ -10,7 +40,10 @@ const HomeCards = () => {
                     <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 dark:text-white">Explore Our Practice</h1>
                 </div>
                 <div className="flex flex-wrap -m-4">
-                    <div className="p-4 md:w-1/3 ">
+
+                    {/* Here are the cards */}
+                    <div ref={triggerRef} />
+                    <a.div style={trail[0]} className="p-4 md:w-1/3 ">
                         <div className="flex rounded-lg h-full transition-all hover:-translate-y-2 hover:shadow-md dark:hover:shadow-gray-500 bg-gray-100 p-8 flex-col dark:bg-gray-600">
                             <div className="flex items-center mb-3">
                                 <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-teal-500 text-white flex-shrink-0">
@@ -22,15 +55,17 @@ const HomeCards = () => {
                             </div>
                             <div className="flex-grow">
                                 <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
-                                <a className="mt-3 text-teal-500 inline-flex items-center group hover:cursor-pointer">Learn More
-                                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2 group-hover:translate-x-[3px] transition-all" viewBox="0 0 24 24">
-                                        <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                    </svg>
-                                </a>
+                                <Link href="/paperwork">
+                                    <a className="mt-3 text-teal-500 inline-flex items-center group hover:cursor-pointer">Learn More
+                                        <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2 group-hover:translate-x-[3px] transition-all" viewBox="0 0 24 24">
+                                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                </Link>
                             </div>
                         </div>
-                    </div>
-                    <div className="p-4 md:w-1/3">
+                    </a.div>
+                    <a.div style={trail[1]} className="p-4 md:w-1/3">
                         <div className="flex rounded-lg transition-all hover:-translate-y-2 hover:shadow-md dark:hover:shadow-gray-500 h-full bg-gray-100 p-8 flex-col dark:bg-gray-600">
                             <div className="flex items-center mb-3">
                                 <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-teal-500 text-white flex-shrink-0">
@@ -52,7 +87,7 @@ const HomeCards = () => {
                                 </Link>
                             </div>
                         </div>
-                    </div><div className="p-4 md:w-1/3 ">
+                    </a.div><a.div style={trail[2]} className="p-4 md:w-1/3 ">
                         <div className="flex rounded-lg h-full transition-all hover:-translate-y-2 hover:shadow-md dark:hover:shadow-gray-500 bg-gray-100 p-8 flex-col dark:bg-gray-600">
                             <div className="flex items-center mb-3">
                                 <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-teal-500 text-white flex-shrink-0">
@@ -71,8 +106,8 @@ const HomeCards = () => {
                                 </a>
                             </div>
                         </div>
-                    </div>
-                    <div className="p-4 md:w-1/3 ">
+                    </a.div>
+                    <a.div style={trail[3]} className="p-4 md:w-1/3 ">
                         <div className="flex rounded-lg h-full transition-all hover:-translate-y-2 hover:shadow-md dark:hover:shadow-gray-500 bg-gray-100 p-8 flex-col dark:bg-gray-600">
                             <div className="flex items-center mb-3">
                                 <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-teal-500 text-white flex-shrink-0">
@@ -91,8 +126,8 @@ const HomeCards = () => {
                                 </a>
                             </div>
                         </div>
-                    </div>
-                    <div className="p-4 md:w-1/3 ">
+                    </a.div>
+                    <a.div style={trail[4]} className="p-4 md:w-1/3 ">
                         <div className="flex rounded-lg h-full transition-all hover:-translate-y-2 hover:shadow-md dark:hover:shadow-gray-500 bg-gray-100 p-8 flex-col dark:bg-gray-600">
                             <div className="flex items-center mb-3">
                                 <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-teal-500 text-white flex-shrink-0">
@@ -113,8 +148,8 @@ const HomeCards = () => {
                                 </Link>
                             </div>
                         </div>
-                    </div>
-                    <div className="p-4 md:w-1/3 ">
+                    </a.div>
+                    <a.div style={trail[5]} className="p-4 md:w-1/3 ">
                         <div className="flex rounded-lg h-full transition-all hover:-translate-y-2 hover:shadow-md dark:hover:shadow-gray-500 bg-gray-100 p-8 flex-col dark:bg-gray-600">
                             <div className="flex items-center mb-3">
                                 <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-teal-500 text-white flex-shrink-0">
@@ -133,7 +168,7 @@ const HomeCards = () => {
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </a.div>
                 </div>
             </div>
         </section>

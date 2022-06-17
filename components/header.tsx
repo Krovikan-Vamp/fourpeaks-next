@@ -102,10 +102,17 @@ const Header = () => {
                                                     <a className="font-medium tracking-wide text-gray-700 dark:text-gray-200 transition-colors duration-200 dark:hover:text-teal-400 hover:text-teal-400">About</a>
                                                 </Link>
                                             </li>
-                                            <li className="p-1 rounded-lg w-fit">
-                                                <Link href="/patients" aria-label="Our product" title="Our product">
-                                                    <a className="font-medium tracking-wide text-gray-700 dark:text-gray-200 transition-colors duration-200 dark:hover:text-teal-400 hover:text-teal-400">Patients</a>
+                                            <li className="p-1 rounded-lg inline-flex items-center">
+                                                <Link href="#" aria-label="Our product" title="Our product">
+                                                    <a className="peer  font-medium tracking-wide dark:text-gray-100">Patients</a>
                                                 </Link>
+                                                <div className="hidden dark:bg-gray-700 transition-all ease-in peer-hover:flex hover:flex flex-col bg-white drop-shadow-lg absolute z-10 translate-y-[6rem] rounded-md">
+                                                    <Link href="/paperwork"><a className='px-5 py-3 dark:text-white dark:hover:text-black hover:bg-gray-300 hover:rounded-md'>Paperwork</a></Link>
+                                                    <Link href="/services"><a className='px-5 py-3 dark:text-white dark:hover:text-black hover:bg-gray-300'>Services</a></Link>
+                                                    <Link href="/surgeons"><a className='px-5 py-3 dark:text-white dark:hover:text-black hover:bg-gray-300'>Testimonials</a></Link>
+                                                    <hr />
+                                                    <Link href="/contact"><a className='px-5 py-3 dark:text-white dark:hover:text-black hover:bg-gray-300 hover:rounded-md'>One Medical Passport</a></Link>
+                                                </div>
                                             </li>
                                             <li className="p-1 rounded-lg w-fit">
                                                 <Link href="/surgeons" aria-label="Product pricing" title="Product pricing">
