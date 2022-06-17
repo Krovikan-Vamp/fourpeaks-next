@@ -16,16 +16,17 @@ const Footer = () => {
                         <span className="ml-3 text-xl dark:text-white">Four Peaks Surgery Center</span>
                     </a>
                 </Link>
-                <p className="text-sm text-gray-500 dark:text-gray-300 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2022 Four Peaks Surgery Center
+                <p className="text-sm text-gray-500 dark:text-gray-300 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+                    © 2022 Four Peaks Surgery Center
                 </p>
-                <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-                    Phone: (623) 399-6880<br />
-                    Fax:   (623) 322-1504
-                </span>
-                <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-                    9425 West Bell Rd <br />
-                    Sun City, AZ 85305
-                </span>
+                <p className="text-sm text-gray-500 dark:text-gray-300 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+                    9425 W Bell Road, Sun CIty, AZ
+                </p>
+                <p className="text-sm text-gray-500 dark:text-gray-300 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+                    P: (623) 399-6880
+                    F: (623) 322-1504
+                </p>
+                
             </div>
         </footer>
     )

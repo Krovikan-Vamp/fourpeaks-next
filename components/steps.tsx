@@ -1,9 +1,15 @@
+import { animated } from "react-spring";
+import { fadeInSpring } from "../utils/springs.ts";
+
 const Steps = () => {
+    let fadeIn = fadeInSpring()
 
     return (
         <section className="text-gray-600 body-font dark:text-white dark:bg-gray-800 border-y-4 border-teal-400 bg-gray-100 transition-all ease-linear">
             <div className="container px-5 py-24 mx-auto flex flex-wrap">
-                <div className="flex relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto">
+
+
+                <animated.div style={fadeIn} className="flex relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto">
                     <div className="h-full w-6 absolute inset-2 flex items-center justify-center">
                         <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
                     </div>
@@ -19,8 +25,8 @@ const Steps = () => {
                             <p className="leading-relaxed">Four providers (Aaron LaTowsky, Jennifer Klauschie, Jeffrey Stern, David Kaplan) from Academic Urology open Four Peaks Surgery Center to perform services outside of the hospital and office environments.</p>
                         </div>
                     </div>
-                </div>
-                <div className="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
+                </animated.div>
+                <animated.div style={fadeIn} className="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
                     <div className="h-full w-6 absolute inset-2 flex items-center justify-center">
                         <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
                     </div>
@@ -36,8 +42,8 @@ const Steps = () => {
                             <p className="leading-relaxed">Many more insurance providers began to accept and join contracts with Four Peaks Surgery Center as a provider at a cheaper cost to policy-holders.</p>
                         </div>
                     </div>
-                </div>
-                <div className="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
+                </animated.div>
+                <animated.div style={fadeIn} className="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
                     <div className="h-full w-6 absolute inset-2 flex items-center justify-center">
                         <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
                     </div>
@@ -53,7 +59,7 @@ const Steps = () => {
                             <p className="leading-relaxed">2019 was a year of large growth for both patient satisfaction and Four Peaks&apos; productivity. The total amount of cases increased by <span className="font-bold">150%</span> Better yet, it kept growing.</p>
                         </div>
                     </div>
-                </div>
+                </animated.div>
                 <div className="flex relative pb-10 sm:items-center md:w-2/3 mx-auto">
                     <div className="h-full w-6 absolute inset-2 flex items-center justify-center">
                         <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>

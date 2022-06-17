@@ -6,8 +6,14 @@ import mainBg from '../public/main-bg.jpg'
 import cardImg from '../public/main-card.avif'
 // @ts-ignore
 import imageLoader from '../utils/loader.ts';
+import { animated as a, useSpring } from 'react-spring';
 
 export const HeroMain = () => {
+    const bubbleSpring = useSpring({
+        from: { opacity: 0, },
+        to: { opacity: 1, },
+        config: { tension: 170, friction: 56 },
+    });
     return (
         <div className="relative transition-all ease-in">
             <Img
@@ -32,7 +38,7 @@ export const HeroMain = () => {
                                 <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
                             </svg>
                         </div>
-                        <div className="max-w-md py-4 px-8 bg-gray-100 shadow-lg rounded-lg my-20 dark:bg-gray-800 transition-all ease-in hover:shadow-gray-600">
+                        <a.div style={bubbleSpring} className="max-w-md py-4 px-8 bg-gray-100 shadow-lg rounded-lg my-20 dark:bg-gray-800 transition-all ease-in hover:shadow-gray-600">
                             <div className="flex justify-center md:justify-end -mt-16">
                                 {/* @ts-ignore */}
                                 <Img className="w-20 h-20 object-cover rounded-full border-2 border-teal-400" height={'100%'} width={'100%'} src="main-card.avif" />
@@ -44,7 +50,7 @@ export const HeroMain = () => {
                             <div className="flex justify-end mt-4">
                                 <Link href="#"><a className="text-xl font-medium text-teal-500 ">Hear More</a></Link>
                             </div>
-                        </div>
+                        </a.div>
                     </div>
                 </div>
             </div>
