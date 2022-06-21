@@ -49,7 +49,7 @@ const Header = () => {
                             </Link>
                         </li>
                         <li className="p-1 rounded-lg">
-                            <Link href="#" aria-label="Product pricing" title="Product pricing" className="font-medium tracking-wide dark:text-gray-100">
+                            <Link href="/contact" aria-label="Product pricing" title="Product pricing" className="font-medium tracking-wide dark:text-gray-100">
                                 <a className="font-medium tracking-wide dark:text-gray-100">
                                     Contact
                                 </a>
@@ -69,13 +69,13 @@ const Header = () => {
                                 <div className="transition-all p-5 bg-white border-2 dark:border-teal-400 rounded shadow-lg dark:bg-gray-800">
                                     <div className="flex items-center justify-between mb-4">
                                         <div className="inline-flex items-center hover:cursor-pointer">
-                                            <svg className="w-8 text-teal-400" viewBox="0 0 24 24" strokeLinejoin="round" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" stroke="currentColor" fill="none">
-                                                <rect x="3" y="1" width="7" height="12" />
-                                                <rect x="3" y="17" width="7" height="6" />
-                                                <rect x="14" y="1" width="7" height="6" />
-                                                <rect x="14" y="11" width="7" height="12" />
-                                            </svg>
                                             <Link href="/" aria-label="Company" title="Company" >
+                                                <svg className="w-8 text-teal-400" viewBox="0 0 24 24" strokeLinejoin="round" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" stroke="currentColor" fill="none">
+                                                    <rect x="3" y="1" width="7" height="12" />
+                                                    <rect x="3" y="17" width="7" height="6" />
+                                                    <rect x="14" y="1" width="7" height="6" />
+                                                    <rect x="14" y="11" width="7" height="12" />
+                                                </svg>
                                                 <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase dark:text-gray-100">Four Peaks Surgery Center</span>
                                             </Link>
                                         </div>

@@ -46,6 +46,7 @@ const SvcAccordion = () => {
             let searchInput = document.getElementById('search');
 
             document.addEventListener('keyup', (e) => {
+                // @ts-ignore
                 e.key === `/` ? document.querySelector('#search')?.focus() : null;
             })
             searchInput?.addEventListener('keyup', () => {

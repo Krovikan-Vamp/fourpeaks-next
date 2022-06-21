@@ -1,7 +1,12 @@
 import Link from 'next/link';
+import Head from 'next/head';
+
 export default function FourOhFour() {
 
-    return (
+    return (<>
+        <Head>
+            <title>404 — Page not Found</title>
+        </Head>
         <main className="h-screen w-full flex flex-col justify-center items-center dark:bg-gray-700  bg-gray-50">
             <h1 className="text-9xl font-extrabold dark:text-white tracking-widest">404</h1>
             <div className="bg-teal-400 px-2 text-sm rounded rotate-12 absolute">
@@ -21,5 +26,5 @@ export default function FourOhFour() {
                 </a>
             </button>
         </main>
-    );
+    </>);
 }
