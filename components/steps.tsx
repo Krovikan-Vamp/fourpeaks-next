@@ -1,4 +1,4 @@
-import { animated, useTrail } from "react-spring";
+import { animated, config, useTrail } from "react-spring";
 import { useState, useEffect, useRef } from "react";
 
 const Steps = () => {
@@ -29,7 +29,7 @@ const Steps = () => {
         return entry;
     }
 
-    const trail = useTrail(4, { from: { opacity: 0, translateY: 100 }, to: { opacity: dataRef?.isIntersecting ? 1 : 0, translateY: dataRef?.isIntersecting ? 0 : 100 } });
+    const trail = useTrail(4, { from: { opacity: 0, translateY: 100 }, to: { opacity: dataRef?.isIntersecting ? 1 : 0, translateY: dataRef?.isIntersecting ? 0 : 100 }, config: config.gentle });
 
     return (
         <section className="text-gray-600 body-font dark:text-white dark:bg-gray-800 border-y-4 border-teal-400 bg-gray-100 transition-all ease-linear">
@@ -51,7 +51,9 @@ const Steps = () => {
                         </div>
                     </div>
                 </animated.div>
+
                 <animated.div style={trail[1]} className="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
+            <div ref={triggerRef} />
                     <div className="h-full w-6 absolute inset-2 flex items-center justify-center">
                         <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
                     </div>
@@ -86,7 +88,6 @@ const Steps = () => {
                         </div>
                     </div>
                 </animated.div>
-            <div ref={triggerRef} />
 
                 <animated.div style={trail[2]} className="flex relative pb-10 sm:items-center md:w-2/3 mx-auto">
                     <div className="h-full w-6 absolute inset-2 flex items-center justify-center">

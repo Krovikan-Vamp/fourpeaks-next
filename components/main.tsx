@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import Img from 'next-image-export-optimizer';
-import { animated as a, useSpring } from 'react-spring';
+import { animated as a, config, useSpring } from 'react-spring';
 import { MysteriousText } from './mystery-text.tsx';
 
 export const HeroMain = () => {
 
-    const leftSpring = useSpring({
-        from: { transform: 'translateY(10px)', opacity: 0 },
+    const mainSpring = useSpring({
+        from: { transform: 'translateY(0px)', opacity: 0 },
         to: { transform: 'translateY(0)', opacity: 1 },
+        config: config.molasses
     });
 
     return (
@@ -22,7 +23,7 @@ export const HeroMain = () => {
                 <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
                     <div className="flex flex-col items-center justify-between xl:flex-row">
 
-                        <a.div style={leftSpring} className="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12 my-10 py-10">
+                        <a.div style={mainSpring} className="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12 my-10 py-10">
                             <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
                                 Enjoy{' '}<span className="text-teal-300">exceptional care</span><br className="hidden md:block" />
                                 and <span className="text-teal-300">surgical precision</span>
@@ -36,7 +37,7 @@ export const HeroMain = () => {
                             </svg>
                         </a.div>
 
-                        <a.div style={leftSpring} className="max-w-md py-4 px-8 bg-gray-100 shadow-lg rounded-lg my-20 dark:bg-gray-800 transition-all ease-in hover:shadow-gray-600">
+                        <a.div style={mainSpring} className="max-w-md py-4 px-8 bg-gray-100 shadow-lg rounded-lg my-20 dark:bg-gray-800 transition-all ease-in hover:shadow-gray-600">
                             <div className="flex justify-center md:justify-end -mt-16">
                                 {/* @ts-ignore */}
                                 <Img className="w-20 h-20 object-cover rounded-full border-2 border-teal-400" height={'100%'} width={'100%'} src="main-card.avif" />

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
-import { animated as a, useTrail } from "react-spring";
+import { animated as a, config, useTrail } from "react-spring";
 
 const HomeCards = () => {
     const triggerRef = useRef();
@@ -30,7 +30,7 @@ const HomeCards = () => {
         return entry;
     }
 
-    const trail = useTrail(6, { from: { opacity: 0, translateX: Math.random() * 100 }, to: { opacity: dataRef?.isIntersecting ? 1 : 0, translateX: dataRef?.isIntersecting ? 0 : Math.random() * 100 } });
+    const trail = useTrail(6, { from: { opacity: 0, translateX: -100 }, to: { opacity: dataRef?.isIntersecting ? 1 : 0, translateX: dataRef?.isIntersecting ? 0 : -100 }, config: config.gentle });
 
     return (
         <section className="dark:bg-gray-700  dark:text-white text-gray-600 body-font transition-all ease-in">

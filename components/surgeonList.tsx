@@ -2,7 +2,7 @@ import Img from 'next-image-export-optimizer';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 // @ts-ignore
-import { useSprings, animated } from 'react-spring';
+import { useSprings, useSpring, animated } from 'react-spring';
 
 const Surgeons = () => {
     const [loading, setLoading] = useState(false);
@@ -24,7 +24,7 @@ const Surgeons = () => {
 
     useEffect(() => {
         // @ts-ignore
-        window.localStorage.getItem('surgeonData') === null ? getSurgeons() : setSurgeons(JSON.parse(window.localStorage.getItem('surgeonData')));
+        window.localStorage.getItem('surgeonData') === null ? getSurgeons() : setSurgeons(JSON.parse(window?.localStorage.getItem('surgeonData')));
         setLoading(false)
     }, []);
 
@@ -32,6 +32,7 @@ const Surgeons = () => {
         surgeons.length,
         surgeons.map((item, index) => ({ from: { opacity: 0, translateY: 100 }, to: { opacity: 1, translateY: 0 }, delay: index * 55 }))
     );
+
 
     return (<>
         <section className="dark:text-gray-200 dark:bg-gray-700 text-gray-600 body-font">
@@ -51,7 +52,9 @@ const Surgeons = () => {
                             <animated.div style={springs[index]} className="p-4 lg:w-1/2 md:w-full rounded-md" key={index}>
                                 <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
                                     {/* @ts-ignore */}
-                                    <Img className="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-top sm:mb-0 mb-4 lg:rounded-full" alt={surgeon.fields.surgeon.mapValue.fields.name.stringValue} aria-label={surgeon.fields.surgeon.mapValue.fields.name.stringValue} src={lastName !== "devakumar" ? `https://www.academic-urology.com/images/${lastName}-cutout.png` : `https://www.academic-urology.com/images/${lastName}.png`} />
+                                    <div className="">
+                                    <Img width="500" height="500" className="flex-shrink-0 rounded-lg w-84 h-48 object-cover object-top sm:mb-0 mb-4 lg:rounded-full" alt={surgeon.fields.surgeon.mapValue.fields.name.stringValue} aria-label={surgeon.fields.surgeon.mapValue.fields.name.stringValue} src={lastName !== "devakumar" ? `/${lastName}-cutout.png` : `/${lastName}.png`} />
+                                    </div>
                                     <div className="flex-grow sm:pl-8">
                                         {/* @ts-ignore */}
                                         <h2 className="title-font font-medium text-lg text-teal-500 dark:text-teal-400 mb-3">{surgeon.fields.surgeon.mapValue.fields.name.stringValue}</h2>
@@ -60,7 +63,7 @@ const Surgeons = () => {
                                         <p className="text-right w-full -mt-4">
                                             {/* @ts-ignore */}
                                             <a className="text-teal-500 inline-flex items-center group hover:cursor-pointer" target="_blank" rel='noreferrer' href={surgeon.fields.surgeon.mapValue.fields.long_description.stringValue}>Learn More
-                                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2 group-hover:translate-x-[3px] transition-all" viewBox="0 0 24 24">
+                                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2 group-hover:translate-x-[3px] transition-all duration-500 group-hover:rotate-[360deg]" viewBox="0 0 24 24">
                                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                                                 </svg>
                                             </a>

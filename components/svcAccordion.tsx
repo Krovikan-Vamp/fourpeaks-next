@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 // @ts-ignore
 import { sleep } from "../utils/sleep.ts";
-import { useSprings, animated } from "react-spring";
+import { useSprings, animated, useTrail, easings, config } from "react-spring";
 import { fadeInSprings } from "../utils/springs.ts";
 
 const SvcAccordion = () => {
@@ -58,7 +58,7 @@ const SvcAccordion = () => {
 
     const springs = useSprings(
         services.length,
-        services.map((item, index) => ({ from: { opacity: 0, translateY: 100 }, to: { opacity: 1, translateY: 0 }, delay: index * 55, config: { mass: 1, tension: 500, friction: 100 } }))
+        services.map((_item: never[], index: number) => ({ from: { opacity: 0, translateY: 100 }, to: { opacity: 1, translateY: 0 }, delay: index * 55, config: config.gentle }))
     );
 
     return (<>
