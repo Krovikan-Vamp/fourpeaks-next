@@ -17,7 +17,7 @@ const Header = () => {
                             </Link>
                         </li>
                         <li className="p-1 rounded-lg inline-flex items-center">
-                            <Link href="#" aria-label="Our product" title="Our product">
+                            <Link href="/patients" aria-label="Our product" title="Our product">
                                 <a className="peer  font-medium tracking-wide dark:text-gray-100">Patients</a>
                             </Link>
                             <div className="hidden dark:bg-gray-700 transition-all ease-in peer-hover:flex hover:flex flex-col bg-white drop-shadow-lg absolute z-10 translate-y-[6rem] rounded-md">
@@ -69,15 +69,13 @@ const Header = () => {
                                 <div className="transition-all p-5 bg-white border-2 dark:border-teal-400 rounded shadow-lg dark:bg-gray-800">
                                     <div className="flex items-center justify-between mb-4">
                                         <div className="inline-flex items-center hover:cursor-pointer">
-                                            <Link href="/" aria-label="Company" title="Company" >
-                                                <svg className="w-8 text-teal-400" viewBox="0 0 24 24" strokeLinejoin="round" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" stroke="currentColor" fill="none">
-                                                    <rect x="3" y="1" width="7" height="12" />
-                                                    <rect x="3" y="17" width="7" height="6" />
-                                                    <rect x="14" y="1" width="7" height="6" />
-                                                    <rect x="14" y="11" width="7" height="12" />
-                                                </svg>
-                                                <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase dark:text-gray-100">Four Peaks Surgery Center</span>
-                                            </Link>
+                                            <svg className="w-8 text-teal-400" viewBox="0 0 24 24" strokeLinejoin="round" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" stroke="currentColor" fill="none">
+                                                <rect x="3" y="1" width="7" height="12" />
+                                                <rect x="3" y="17" width="7" height="6" />
+                                                <rect x="14" y="1" width="7" height="6" />
+                                                <rect x="14" y="11" width="7" height="12" />
+                                            </svg>
+                                            <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase dark:text-gray-100">Four Peaks Surgery Center</span>
                                         </div>
                                         <div>
                                             <button
@@ -103,7 +101,7 @@ const Header = () => {
                                                 </Link>
                                             </li>
                                             <li className="p-1 rounded-lg inline-flex items-center">
-                                                <Link href="#" aria-label="Our product" title="Our product">
+                                                <Link href="/patients" aria-label="Our product" title="Our product">
                                                     <a className="peer  font-medium tracking-wide dark:text-gray-100">Patients</a>
                                                 </Link>
                                                 <div className="hidden dark:bg-gray-700 transition-all ease-in peer-hover:flex hover:flex flex-col bg-white drop-shadow-lg absolute z-10 translate-y-[6rem] rounded-md">

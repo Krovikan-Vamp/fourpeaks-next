@@ -25,7 +25,7 @@ export const HeroMain = () => {
 
                         <a.div style={mainSpring} className="w-full max-w-xl mb-12 xl:mb-0 xl:pr-16 xl:w-7/12 my-10 py-10">
                             <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-4xl sm:leading-none">
-                                Enjoy{' '}<span className="text-teal-300">exceptional care</span><br className="hidden md:block" />
+                                Enjoy{' '}<span className="text-teal-300">exceptional care </span><br className="hidden md:block" />
                                 and <span className="text-teal-300">surgical precision</span>
                             </h2>
                             <p className="max-w-xl mb-4 text-base text-gray-400 md:text-lg">

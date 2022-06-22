@@ -43,10 +43,14 @@ async function signIn(email: string, password: string, returnToken?: Boolean): P
         password: password,
 
         // Redirect to user landing page on signin success
-    }).then(res => {
-        res.status == 200 ? document.cookie = `userInfo=${JSON.stringify(res.data)}& ` + `expires=${new Date(Date.now() + 3600 * 1000).toUTCString()}` : ``
+    }).then(async (res) => {
+        await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY}`, { idToken: res.data.idToken })
+            .then((res2) => {
+                res2.status == 200 ? (document.cookie = `userInfo=${JSON.stringify(res.data)}& ` + `expires=${new Date(Date.now() + 3600 * 1000).toUTCString()}`, localStorage.setItem('userInfo', JSON.stringify(res2.data.users[0]))) : ``;
+                console.log(`Data saved: `, res2.data)
+                Router.push(`/users`)
+            })
 
-        alert(`Welcome ${res.data.displayName}`)
         return res.data
     }).catch(err => {
         console.log(`Error code should be below`)
