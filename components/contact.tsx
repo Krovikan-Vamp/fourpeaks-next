@@ -6,7 +6,6 @@ const Contact = () => {
         to: { opacity: 1, translateY: 0 },
         delay: 1500
     });
-    const bgSpring = useSpring({ from: { opacity: 0 }, config: config.gentle, to: { opacity: 1 } });
 
     const closeCard = () => {
         document.querySelector(`#hide-card`)?.remove()
