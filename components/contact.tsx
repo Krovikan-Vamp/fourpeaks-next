@@ -15,7 +15,7 @@ const Contact = () => {
             <animated.div className="hover:blur-none  lg:blur-sm md:blur-sm transition-all duration-500 absolute inset-0 bg-gray-300 dark:bg-gray-700 contrast-[1.05] dark:invert-[85%] dark:contrast-[1.05]">
                 <iframe width="100%" height="100%" title="map" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3321.7478607717476!2d-112.26588958479579!3d33.63777908072076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872b42eb42a4f5bf%3A0x336ca4f0f302ff2e!2sFour%20Peaks%20Surgery%20Center!5e0!3m2!1sen!2sus!4v1655761710582!5m2!1sen!2sus"></iframe>
             </animated.div>
-            <animated.div style={trails[0]} className="container lg:px-24 lg:py-24 mx-auto" id="hide-card">
+            <animated.div style={trails[0]} className="container lg:px-32 lg:py-24 mx-auto" id="hide-card">
                 <div className="lg:w-1/2 md:w-1/2 bg-white dark:bg-gray-800 dark:border-gray-600  rounded-xl p-8 flex flex-col md:ml-auto w-full lg:mt-10 md:mt-0 relative z-10 shadow-md border-4">
                     <h2 className="text-teal-400 dark:text-teal-500 text-lg mb-1 font-medium title-font flex w-full">Contact Us<button onClick={closeCard} className='ml-auto lg:hidden md:hidden'>X</button></h2>
                     <p className="leading-relaxed mb-5 text-gray-700 dark:text-gray-300">Feel free to reach out with your comments or concerns</p>

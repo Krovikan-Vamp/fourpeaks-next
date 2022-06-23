@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Router from 'next/router';
 // @ts-ignore
 import ToggleDM from './darkToggle.tsx';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    function handleContextClick(e) {
+        e.preventDefault();
+        Router.push('/users')
+    }
     return (
         <div className="dark:bg-gray-800 bg-gray-100 transition-all ease-in border-b-4 border-teal-400">
             <div className="px-4 py-6 mx-auto lg:py-8 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
@@ -29,12 +34,15 @@ const Header = () => {
                             </div>
                         </li>
                     </ul>
-                    <svg className="w-8 text-teal-400" viewBox="0 0 24 24" strokeLinejoin="round" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" stroke="currentColor" fill="none">
-                        <rect x="3" y="1" width="7" height="12" />
-                        <rect x="3" y="17" width="7" height="6" />
-                        <rect x="14" y="1" width="7" height="6" />
-                        <rect x="14" y="11" width="7" height="12" />
-                    </svg>
+                    {/* logo */}
+                    <div onContextMenu={handleContextClick}>
+                        <svg className="w-8 text-teal-400" viewBox="0 0 24 24" strokeLinejoin="round" strokeWidth="2" strokeLinecap="round" strokeMiterlimit="10" stroke="currentColor" fill="none">
+                            <rect x="3" y="1" width="7" height="12" />
+                            <rect x="3" y="17" width="7" height="6" />
+                            <rect x="14" y="1" width="7" height="6" />
+                            <rect x="14" y="11" width="7" height="12" />
+                        </svg>
+                    </div>
                     <span className="ml-2 text-xl font-bold tracking-wide dark:text-gray-100 uppercase">
                         <Link href="/" aria-label="Company" title="FPSC" className="inline-flex items-center">
                             Four Peaks Surgery Center

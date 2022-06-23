@@ -5,13 +5,11 @@ import '../styles/globals.css'
 function MyApp({ Component, pageProps }) {
   // return my header, footer and stuff here to persist
 
-  return (<>
-
+  return (<div className="min-h-screen">
     <Header />
     <Component {...pageProps} />
-    {/* <div hidden={} className="min-h-screen z-10" /> */}
     <Footer />
-  </>)
+  </div>)
 }
 
 export default MyApp
