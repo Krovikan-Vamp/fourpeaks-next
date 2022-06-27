@@ -54,7 +54,7 @@ const HomeCards = () => {
                                 <h2 className="text-gray-900 text-lg title-font font-medium dark:text-white">Paperwork</h2>
                             </div>
                             <div className="flex-grow">
-                                <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
+                                <p className="leading-relaxed text-base">View the paperwork that will be filled out during registration upon your visit. Be sure to bring your photo ID and insurance cards.</p>
                                 <Link href="/paperwork">
                                     <a className="mt-3 text-teal-500 inline-flex items-center group hover:cursor-pointer">Learn More
                                         <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2 group-hover:translate-x-[3px] transition-all" viewBox="0 0 24 24">
@@ -76,7 +76,7 @@ const HomeCards = () => {
                                 <h2 className="text-gray-900 text-lg title-font font-medium dark:text-white">Surgeons</h2>
                             </div>
                             <div className="flex-grow">
-                                <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
+                                <p className="leading-relaxed text-base">The surgery center is staffed by a team of highly skilled and experienced surgeons who are dedicated to providing the best possible care to their patients.</p>
                                 <Link href="/surgeons">
                                     <a className="mt-3 text-teal-500 inline-flex items-center group hover:cursor-pointer">Learn More
                                         <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="group-hover:translate-x-[3px] transition-all w-4 h-4 ml-2" viewBox="0 0 24 24">
@@ -98,7 +98,7 @@ const HomeCards = () => {
                                 <h2 className="text-gray-900 text-lg title-font font-medium dark:text-white">About</h2>
                             </div>
                             <div className="flex-grow">
-                                <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
+                                <p className="leading-relaxed text-base">Learn what Four Peaks Surgery Center has to offer and more about the story so far!</p>
                                 <Link href="/about">
                                     <a className="mt-3 text-teal-500 inline-flex items-center group hover:cursor-pointer">Learn More
                                         <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2 group-hover:translate-x-[3px] transition-all" viewBox="0 0 24 24">
@@ -120,7 +120,7 @@ const HomeCards = () => {
                                 <h2 className="text-gray-900 text-lg title-font font-medium dark:text-white">Testimonials</h2>
                             </div>
                             <div className="flex-grow">
-                                <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
+                                <p className="leading-relaxed text-base">Hear patient testimonials about their experiences here. We are proud to offer outstanding healthcare services in a convenient location that makes life easier for our patients and their families.</p>
                                 <a className="mt-3 text-teal-500 inline-flex items-center group hover:cursor-pointer">Learn More
                                     <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2 group-hover:translate-x-[3px] transition-all" viewBox="0 0 24 24">
                                         <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -140,7 +140,7 @@ const HomeCards = () => {
                                 <h2 className="text-gray-900 text-lg title-font font-medium dark:text-white">Services</h2>
                             </div>
                             <div className="flex-grow">
-                                <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
+                                <p className="leading-relaxed text-base">See what Four Peaks Surgery Center has to offer on the Urological and Urogynecological spectrum.If you're looking for quality care and want to feel confident about your decision, then call us today.</p>
                                 <Link href="/services">
                                     <a className="mt-3 text-teal-500 inline-flex items-center group hover:cursor-pointer">Learn More
                                         <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2 group-hover:translate-x-[3px] transition-all" viewBox="0 0 24 24">
@@ -162,7 +162,7 @@ const HomeCards = () => {
                                 <h2 className="text-gray-900 text-lg title-font font-medium dark:text-white">Contact</h2>
                             </div>
                             <div className="flex-grow">
-                                <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
+                                <p className="leading-relaxed text-base">Contact our office to have your questions and concerns answered. We want to make sure that you are fully satisfied with your experience.</p>
                                 <Link href="/contact">
                                     <a className="mt-3 text-teal-500 inline-flex items-center group hover:cursor-pointer">Learn More
                                         <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2 group-hover:translate-x-[3px] transition-all" viewBox="0 0 24 24">

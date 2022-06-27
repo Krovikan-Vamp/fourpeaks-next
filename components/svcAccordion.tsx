@@ -72,6 +72,7 @@ const SvcAccordion = () => {
                         <input type="text" id='search' className="dark:bg-gray-600 dark:shadow-gray-500 bg-gray-50 shadow-md h-14 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none" placeholder='Press "/" to jump to search' />
                     </div>
                 </div>
+
                 <div className="flex flex-wrap -m-4 justify-center">
 
                     {/* Map function here */}

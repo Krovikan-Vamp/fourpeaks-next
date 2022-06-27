@@ -2,13 +2,13 @@ import axios from 'axios';
 import Router from 'next/router'
 import { setCookie } from './cookies.ts';
 
-async function signUp(email: string, password: string, returnToken?: Boolean): Promise<XMLHttpRequest> {
+async function signUp(email: string, password: string, returnToken: Boolean): Promise<XMLHttpRequest> {
     let endpoint = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY}`
 
     let response = await axios.post(endpoint, {
         email: email,
         password: password,
-
+        returnToken: true,
         // On signup success, we want to redirect the user to the signin page
     }).then(res => {
         res.status == 200 ? setCookie(`userInfo`, JSON.stringify(res.data), 7) : ``
@@ -37,25 +37,33 @@ async function signUp(email: string, password: string, returnToken?: Boolean): P
     return response
 }
 
-async function signIn(email: string, password: string, returnToken?: Boolean): Promise<XMLHttpRequest> {
+async function signIn(email: string, password: string, returnToken: Boolean): Promise<XMLHttpRequest> {
     let endpoint = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY}`
 
     let response = await axios.post(endpoint, {
         email: email,
         password: password,
+        returnToken: true,
 
         // Redirect to user landing page on signin success
     }).then(async (res) => {
+        // Create a function that adds an expiration date to the user's token
+        function addExpirationDate(): string {
+            let expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 7);
+            return `${expirationDate.getTime()}`
+        }
+
+        localStorage.setItem('userSessionToken', addExpirationDate())
         await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY}`, { idToken: res.data.idToken })
             .then((res2) => {
                 res2.status == 200 ? (setCookie(`userInfo`, JSON.stringify(res2.data.users[0]), 7), localStorage.setItem('userInfo', JSON.stringify(res2.data.users[0]))) : ``;
-                alert(localStorage.getItem('userInfo'))
+
                 Router.push(`/users`)
             })
 
         return res.data
     }).catch(err => {
-        console.log(`Error code should be below`)
         console.error(err.response.data.error.message)
 
         return err.response.data.error.message
