@@ -28,7 +28,7 @@ const Header = () => {
                             <div className="hidden dark:bg-gray-700 transition-all ease-in peer-hover:flex hover:flex flex-col bg-white drop-shadow-lg absolute z-10 translate-y-[6rem] rounded-md">
                                 <Link href="/paperwork"><a className='px-5 py-3 dark:text-white dark:hover:text-black hover:bg-gray-300 hover:rounded-md'>Paperwork</a></Link>
                                 <Link href="/services"><a className='px-5 py-3 dark:text-white dark:hover:text-black hover:bg-gray-300'>Services</a></Link>
-                                <Link href="/surgeons"><a className='px-5 py-3 dark:text-white dark:hover:text-black hover:bg-gray-300'>Testimonials</a></Link>
+                                <Link href="/testimonials"><a className='px-5 py-3 dark:text-white dark:hover:text-black hover:bg-gray-300'>Testimonials</a></Link>
                                 <hr />
                                 <Link href="/contact"><a className='px-5 py-3 dark:text-white dark:hover:text-black hover:bg-gray-300 hover:rounded-md'>One Medical Passport</a></Link>
                             </div>
@@ -115,7 +115,7 @@ const Header = () => {
                                                 <div className="hidden dark:bg-gray-700 transition-all ease-in peer-hover:flex hover:flex flex-col bg-white drop-shadow-lg absolute z-10 translate-y-[6rem] rounded-md">
                                                     <Link href="/paperwork"><a className='px-5 py-3 dark:text-white dark:hover:text-black hover:bg-gray-300 hover:rounded-md'>Paperwork</a></Link>
                                                     <Link href="/services"><a className='px-5 py-3 dark:text-white dark:hover:text-black hover:bg-gray-300'>Services</a></Link>
-                                                    <Link href="/surgeons"><a className='px-5 py-3 dark:text-white dark:hover:text-black hover:bg-gray-300'>Testimonials</a></Link>
+                                                    <Link href="/testimonials"><a className='px-5 py-3 dark:text-white dark:hover:text-black hover:bg-gray-300'>Testimonials</a></Link>
                                                     <hr />
                                                     <Link href="/contact"><a className='px-5 py-3 dark:text-white dark:hover:text-black hover:bg-gray-300 hover:rounded-md'>One Medical Passport</a></Link>
                                                 </div>

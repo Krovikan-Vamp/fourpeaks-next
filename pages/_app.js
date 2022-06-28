@@ -1,5 +1,6 @@
 import { Header } from '../components/header.tsx'
 import { Footer } from '../components/footer.tsx'
+import { useSpring, animated } from 'react-spring'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
@@ -7,7 +8,7 @@ function MyApp({ Component, pageProps }) {
 
   return (<div className="min-h-screen">
     <Header />
-    <Component {...pageProps} />
+      <Component {...pageProps} />
     <Footer />
   </div>)
 }

@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
-import { firestore } from '../utils/firebase.ts';
+import { firestore, app } from '../utils/firebase.ts';
 import { sleep } from '../utils/sleep.ts';
-import { collection, getDocs, orderBy, query } from "@firebase/firestore"
-import { useSpring, animated, useTrail, easings, config } from "react-spring";
+import { collection, getDocs, query } from "firebase/firestore"
+import { useSpring, animated, config } from "react-spring";
 
 const PhysicianInformation = () => {
     const [loading, setLoading] = useState(true);
+    const [physicians, setPhysicians] = useState([]);
 
 
     const getPhysicians = async () => {
+        console.log(firestore)
         const physCollection = collection(firestore, 'Auto Suggestions');
 
-        const [physicians, setPhysicians] = useState([]);
         setLoading(true);
         const physicianQuery = query(physCollection);
         const qSnapshot = await getDocs(physicianQuery);

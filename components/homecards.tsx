@@ -121,11 +121,13 @@ const HomeCards = () => {
                             </div>
                             <div className="flex-grow">
                                 <p className="leading-relaxed text-base">Hear patient testimonials about their experiences here. We are proud to offer outstanding healthcare services in a convenient location that makes life easier for our patients and their families.</p>
-                                <a className="mt-3 text-teal-500 inline-flex items-center group hover:cursor-pointer">Learn More
-                                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2 group-hover:translate-x-[3px] transition-all" viewBox="0 0 24 24">
-                                        <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                    </svg>
-                                </a>
+                                <Link href="/testimonials">
+                                    <a className="mt-3 text-teal-500 inline-flex items-center group hover:cursor-pointer">Learn More
+                                        <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2 group-hover:translate-x-[3px] transition-all" viewBox="0 0 24 24">
+                                            <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                </Link>
                             </div>
                         </div>
                     </a.div>
