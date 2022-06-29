@@ -3,11 +3,10 @@ import Head from 'next/head';
 import { UserInfo } from '../utils/interfaces.ts';
 import { getCookie } from '../utils/cookies.ts';
 import Link from 'next/link';
-import { config, useSpring, animated } from 'react-spring';
+import { config, useSpring, useTrail, animated } from 'react-spring';
 
 const UserFunctions = () => {
     let user: UserInfo | null = null;
-    let testimonialMonths = [...new Set(JSON.parse(localStorage.getItem('testimonials')).map((o) => o.fields.date_M_Y.stringValue))];
 
     const logout = () => {
         localStorage.removeItem('userInfo');
@@ -15,26 +14,9 @@ const UserFunctions = () => {
         Router.push('/login')
     }
 
-    const physStatSpring = useSpring({
-        from: { val: 0 },
-        to: { val: JSON.parse(localStorage.getItem('physicians') || '[]').length },
-        config: { friction: 250 },
-        delay: 500,
-    })
 
-    const testStatSpring = useSpring({
-        from: { val: 0 },
-        to: { val: JSON.parse(localStorage.getItem('testimonials') || '[]').length },
-        config: { friction: 250 },
-        delay: 500,
-    })
 
-    const testStatSpring2 = useSpring({
-        from: { val: 0 },
-        to: { val: testimonialMonths.length },
-        config: { friction: 250 },
-        delay: 500,
-    })
+
 
     if (localStorage.getItem('userInfo') === null) {
         alert(`Looks like you are not logged in, we're redirecting you to the login page.`);
@@ -45,6 +27,32 @@ const UserFunctions = () => {
     } else if (localStorage.getItem('userInfo') !== null) {
         console.log(`User info found in cookie storage`);
         user = JSON.parse(localStorage.getItem('userInfo'));
+        let testimonialMonths = sessionStorage.getItem(`testimonials`) ? [...new Set(JSON.parse(sessionStorage.getItem('testimonials')).map((o) => o.fields.date_M_Y.stringValue))] : [];
+        const testStatSpring2 = useSpring({
+            from: { val: 0 },
+            to: { val: testimonialMonths.length },
+            config: { friction: 250 },
+            delay: 500,
+        })
+        const physStatSpring = useSpring({
+            from: { val: 0 },
+            to: { val: JSON.parse(localStorage.getItem('physicians') || '[]').length },
+            config: { friction: 250 },
+            delay: 500,
+        })
+
+        const testStatSpring = useSpring({
+            from: { val: 0 },
+            to: { val: JSON.parse(sessionStorage.getItem('testimonials') || '[]').length },
+            config: { friction: 250 },
+            delay: 500,
+        })
+
+        const mainCardTrails = useTrail(6, {
+            from: { opacity: 0, transform: 'translateX(-175px)' },
+            to: { opacity: 1, transform: 'translateX(0px)' },
+
+        })
 
         return (<>
             <Head>
@@ -59,7 +67,8 @@ const UserFunctions = () => {
             <section className="text-gray-600 body-font">
                 <div className="container px-5 py-24 mx-auto">
                     <div className="flex flex-wrap -m-4">
-                        <div className="p-4 lg:w-1/3 ">
+
+                        <animated.div style={mainCardTrails[0]} className="p-4 lg:w-1/3 ">
                             <div className="transition-all hover:-translate-y-3 hover:shadow-md h-full bg-gray-200 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
                                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CONTACTS</h2>
                                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Physician Contact Information</h1>
@@ -85,8 +94,8 @@ const UserFunctions = () => {
                                     </span>
                                 </div>
                             </div>
-                        </div>
-                        <div className="p-4 lg:w-1/3 ">
+                        </animated.div>
+                        <animated.div style={mainCardTrails[1]} className="p-4 lg:w-1/3 ">
                             <div className="transition-all hover:-translate-y-3 hover:shadow-md h-full bg-gray-200 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
                                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">PATIENT SATISFACTION</h2>
                                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Add Patient Testimonials</h1>
@@ -112,8 +121,8 @@ const UserFunctions = () => {
                                     </span>
                                 </div>
                             </div>
-                        </div>
-                        <div className="p-4 lg:w-1/3 ">
+                        </animated.div>
+                        <animated.div style={mainCardTrails[2]} className="p-4 lg:w-1/3 ">
                             <div className="transition-all hover:-translate-y-3 hover:shadow-md h-full bg-gray-200 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
                                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">INFORMATION</h2>
                                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Manage Website Information</h1>
@@ -138,10 +147,10 @@ const UserFunctions = () => {
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </animated.div>
 
                         {/* ============================================== SECOND ROW ==============================================  */}
-                        <div className="p-4 lg:w-1/3 ">
+                        <animated.div style={mainCardTrails[3]} className="p-4 lg:w-1/3 ">
                             <div className="transition-all hover:-translate-y-3 hover:shadow-md h-full bg-gray-200 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
                                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
                                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Selvage Poke Waistcoat Godard</h1>
@@ -166,8 +175,8 @@ const UserFunctions = () => {
                                     </span>
                                 </div>
                             </div>
-                        </div>
-                        <div className="p-4 lg:w-1/3 ">
+                        </animated.div>
+                        <animated.div style={mainCardTrails[4]} className="p-4 lg:w-1/3 ">
                             <div className="transition-all hover:-translate-y-3 hover:shadow-md h-full bg-gray-200 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
                                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
                                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Selvage Poke Waistcoat Godard</h1>
@@ -192,8 +201,8 @@ const UserFunctions = () => {
                                     </span>
                                 </div>
                             </div>
-                        </div>
-                        <div className="p-4 lg:w-1/3 ">
+                        </animated.div>
+                        <animated.div style={mainCardTrails[5]} className="p-4 lg:w-1/3 ">
                             <div className="transition-all hover:-translate-y-3 hover:shadow-md h-full bg-gray-200 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
                                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
                                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Selvage Poke Waistcoat Godard</h1>
@@ -218,7 +227,7 @@ const UserFunctions = () => {
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </animated.div>
                     </div>
                 </div>
             </section>

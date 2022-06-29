@@ -17,3 +17,10 @@ export interface UserInfo {
     "createdAt": string,
     "lastRefreshAt": string
 }
+
+export interface Testimonial {
+    month: number,
+    year: number,
+    date_M_Y: string,
+    comment: string
+}

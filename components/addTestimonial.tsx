@@ -1,21 +1,26 @@
 import axios from 'axios';
-import { app } from '../utils/firebase.ts'
+import { firestore } from '../utils/firebase.ts'
+import { Testimonial } from '../utils/interfaces.ts'
+import { collection, addDoc } from 'firebase/firestore'
 
 const AddTestimonialComponent = () => {
+
     const handleSubmit = async (e) => {
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         e.preventDefault(); // Prevent page reload
         let date = e.target[0].value; // returns the month, year like this -> MM-YYYY
         let comments = e.target[1].value; // string
         date = date.split('-') // Sets `date` to ['MM', 'YYYY']
-        date = { month: parseInt(date[1]), year: date[0], full_date: `${months[parseInt(date[1] - 1)]} ${date[0]}` } // date = {month: M, year: YYYY, full_date: "spelledmonth, YYYY"}
-
-        axios.post(`https://firestore.googleapis.com/v1/projects/${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}/databases/(default)/documents/Testimonials?key=${process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY}`,
-            { "fields": { "month": { "stringValue": date.month }, "year": { "integerValue": parseInt(date.year) }, "date_M_Y": { "stringValue": date.full_date }, "comment": { "stringValue": comments } } })
+        let new_date: Testimonial = { month: parseInt(date[1]), year: parseInt(date[0]), date_M_Y: `${months[date[1] - 1].toString()} ${date[0]}`, comment: comments } // date = {month: M, year: YYYY, full_date: "spelledmonth, YYYY"}
+        
+        const testimonialsCollection = collection(firestore, 'Testimonials');
+        
+        addDoc(testimonialsCollection, new_date)
             .then((res) => {
-                console.log(res.status, res)
-                e.target[1].value = ''
+                console.log(res)
+                e.target[1].value = '';
             })
+
     }
 
     return (<div className='flex min-h-screen'>

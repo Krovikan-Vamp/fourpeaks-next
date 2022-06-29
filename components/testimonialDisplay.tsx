@@ -11,27 +11,26 @@ const TestimonialDisplay = () => {
         setLoading(true);
         await axios.get(`https://firestore.googleapis.com/v1/projects/${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}/databases/(default)/documents/Testimonials?key=${process.env.NEXT_PUBLIC_FIREBASE_PUBLIC_API_KEY}&pageSize=100`)
             .then((res) => {
-                localStorage.setItem('testimonials', JSON.stringify(res.data.documents))
+                sessionStorage.setItem('testimonials', JSON.stringify(res.data.documents))
             })
             .catch((err) => {
                 console.log(err);
                 return err;
             })
-        setTestimonials(JSON.parse(localStorage.getItem('testimonials')));
+        setTestimonials(JSON.parse(sessionStorage.getItem('testimonials')));
         setLoading(false);
 
     }
 
     useEffect(() => {
-        localStorage.getItem('testimonials') === null ? getTestimonials() : setTestimonials(JSON.parse(localStorage.getItem('testimonials')));
-        ;
+        sessionStorage.getItem('testimonials') === null ? getTestimonials() : setTestimonials(JSON.parse(sessionStorage.getItem('testimonials')));
     }, [])
-
+    
     const choose = (options) => {
         return options[Math.floor(Math.random() * options.length)];
     }
     // Changesh it
-    const arr1 = testimonials.map(test => { return { ...test, date: new Date(test.fields.date_M_Y.stringValue) } })
+    const arr1 = testimonials.map(test => { console.log(test); return { ...test, date: new Date(test.fields.date_M_Y.stringValue) } })
     arr1.sort((a, b) => { return Number(new Date(a.date)) - Number(new Date(b.date)) })
 
     const months = [...new Set(testimonials.map((o) => o.fields.date_M_Y.stringValue))]
