@@ -54,6 +54,11 @@ Following the collection of the data, most of it is stored in the `localStorage`
 
 Given the current standards of having PWAs replace webpages, apps prefer to store userdata and other things in their own storage rather than asking an API for it every time it's needed. This makes switches between apps MUCH faster, saving up to 2s of loading on each page. Page changes feel smooth and natural without waiting for data to load and React Spring's styling.
 
+### Examples
+
+<img width="920" alt="utils_auth ts" src="https://user-images.githubusercontent.com/97307321/176976272-7050bd6d-f3f9-4f5d-8cf6-fbcea834f36a.png">
+<img width="920" alt="components_physicianStats tsx" src="https://user-images.githubusercontent.com/97307321/176976278-2f99ca98-d6c7-4cfc-88e6-302b6cd85814.png">
+
 
 ## Problem Solving
 
@@ -61,8 +66,17 @@ Coming from the original vanilla React standpoint, there were a lot of things th
 
 ### Testimonial Sorting
 
-The simplest way to put this in my opinion, is to blame it on Javascript.
+The simplest way to put this in my opinion, is to blame it on Javascript's [inability to sort further than 1 character of a string or number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort). I find a solution to this by creating a new [set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) of unique `values`. The `values` are [dates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) that are parsed out by converting the `date` to a `number` and then evaluating size. To make more sense of this, please see below.
 
 <img width="920" alt="components_testimonialDisplay tsx" src="https://user-images.githubusercontent.com/97307321/176971375-623f10b5-de8d-4f15-8e97-161c530fa1fc.png">
 
+### Asset Load Times
+
+A fundamental issue of web development is the time it takes to "paint" the webpage. This includes everything from caching HTTP requests, to storing custom API data inside the browser using its API, and customizing API responses with specific Firebase queries.
+
+Below are examples of techniques used to save page-load time as well as differences between first `page` visit, and future:
+
+Here is the result of the old request to the API (left) compared to the optimized time (right):
+
 ![image](https://user-images.githubusercontent.com/97307321/176969788-818c08c5-8533-4364-9f76-dc4db96c79a8.png)
+![image](https://user-images.githubusercontent.com/97307321/176975638-4d66def9-82f2-4e26-9ef0-8888b9610aff.png)
