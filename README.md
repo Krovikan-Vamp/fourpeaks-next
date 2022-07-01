@@ -4,64 +4,11 @@ This is a repository containing the Next.js version of the Four Peaks Surgery Ce
 
 ## Key Differences
 
-Because this project uses Next.js, almost all components needed to be remade. I chose to create this project using Typescript for my functional components, and ES6 JavaScript for the /pages directory. Not only does this version use Reactv18.0, it also has 60% fewer dependencies. 
+Because this project uses Next.js, almost all components needed to be remade. I chose to create this project using Typescript for my functional components, and ES6 JavaScript for the `/pages` directory. Not only does this version use `React v18.0`, it also has 60% fewer dependencies. 
 
 ### Dependencies
-```JSON
-  // package.json
 
-  // Next.js Project
-  "dependencies": {
-    "@firebase/firestore": "^3.4.11",
-    "@react-spring/parallax": "^9.4.5",
-    "axios": "^0.27.2",
-    "firebase": "^9.8.3",
-    "firebase-admin": "^11.0.0",
-    "next": "12.1.6",
-    "next-image-export-optimizer": "^0.10.1",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
-    "react-firebase-hooks": "^5.0.3",
-    "react-spring": "^9.4.5",
-    "react-strap": "^0.0.1",
-    "reactstrap": "^9.1.1"
-  }
-  
-  // create-react-app
-  "dependencies": {
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
-    "@firebase/analytics": "^0.7.7",
-    "@material-ui/icons": "^4.11.2",
-    "@mui/material": "^5.6.4",
-    "@mui/styled-engine-sc": "^5.1.0",
-    "@mui/x-data-grid": "^5.7.0",
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "bootstrap": "^5.1.3",
-    "crypto": "^1.0.1",
-    "crypto-js": "^4.1.1",
-    "encrypt-rsa": "^2.0.1",
-    "firebase": "^9.6.6",
-    "firebase-admin": "^10.0.1",
-    "firebase-cli": "^1.2.0",
-    "material-ui-icons": "^1.0.0-beta.36",
-    "mdbreact": "^5.2.0",
-    "nodemailer": "^6.7.3",
-    "prompt-sync": "^4.2.0",
-    "react": "^17.0.2",
-    "react-bootstrap": "^2.0.4",
-    "react-dom": "^17.0.2",
-    "react-router-dom": "^6.2.1",
-    "react-scripts": "^5.0.1",
-    "react-simple-star-rating": "^4.0.5",
-    "schema-object": "^4.0.11",
-    "styled-components": "^5.3.3",
-    "uuid": "^8.3.2",
-    "web-vitals": "^2.1.2"
-  }
-```
+<img width="920" alt="package json" src="https://user-images.githubusercontent.com/97307321/176968593-b553d19e-c956-44ce-9554-7e0fc523c514.png">
 
 ## Styling
 
@@ -74,69 +21,26 @@ The new Next.js project rests its styling-responsibility on [Tailwind CSS](https
 Having a nicely-styled webpage is nice to have on it's own, although current web standards are closer to classifying webpages as webapps on a performance and UX standpoint. To live up to this, the Next.js project has the option for dark-mode, along with heavy use of "[react-spring](https://react-spring.dev/)" to provide a much more, app-like experience. Instead of things flashing on-screen the instant they load, they flow onto the screen with the `useSpring` hook to provide a natural experience, as compared to normal, linear animation timing.
 
 For example:
-``` TSX
-  // After getting the information and setting it to `surgeons`
-  const surgeons: never[] = [...{}]; // List of `surgeon` Objects from Firestore
-  
-  // Here we define the amount of springs with a delay between each so they can animate onto the screen at different times
-  const springs = useSprings(
-        surgeons.length, // The amount of springs to create
-        surgeons.map((item, index) => ({ 
-          from: { opacity: 0, translateY: 100 },
-          to: { opacity: 1, translateY: 0 }, 
-          delay: index * 55
-         }))
-    );
-```
+
+<img width="920" alt="components_surgeonList tsx (4)" src="https://user-images.githubusercontent.com/97307321/176968275-2075f970-d35f-41e2-947e-2fe946825909.png">
+
 
 Then, to integrate these springs into action, is as simple as adding `animated.` to the JSX inheriting element:
-``` TSX
-  // In the return section of your functional component
-  {surgeons.map((surgeon, index) => {
-    return (
-        <animated.div style={springs[index]} className="p-4 lg:w-1/2 md:w-full rounded-md" key={index}>
-             ... {/* Children or other JSX props */}
-        </animated.div>
-      )
-    })
-  }
-```
+
+<img width="920" alt="components_surgeonList tsx (2)" src="https://user-images.githubusercontent.com/97307321/176967400-0220ce1a-883d-4078-9367-befd961fb6f4.png">
+
 
 > There is a better way to solve this as of the newest version of React Spring
 
-``` TSX
-  // Create with a delay using `useTrail`
-  
-  const trails = useTrail(
-    surgeons.length, // The amount of Trails you want to return
-    {
-      to: {...props},
-      from: {...props},
-      config: props[, ...props]
-    })
-    
-   // Inside the return statement
-   {surgeons.map((surgeon, index) => {
-    return (
-        <animated.div style={trails[index]} className="p-4 lg:w-1/2 md:w-full rounded-md" key={index}>
-             ... {/* Children or other JSX props */}
-        </animated.div>
-      )
-    })
-  }
-```
+<img width="920" alt="components_surgeonList tsx (1)" src="https://user-images.githubusercontent.com/97307321/176967306-dcc47049-3cba-4ffb-b7ae-954f84f4529b.png">
 
 ### Tailwind CSS
 
 Using Tailwind has been such a time and life saver. As someone who despises the look of a CSS file, it made my life much easier after learning for a few days. It provides so much readability into the component files, instead of seeing a classname I see exactly what the syntax says. (pb-4 is padding-bottom: 4em) and so on. [Setup for Tailwind CSS in Next.js](https://tailwindcss.com/docs/guides/nextjs) is less than 10 steps and solves too many issues to count. Thanks to the devs @tailwindcss!
 
 The best part is my [CSS file](https://github.com/Krovikan-Vamp/fourpeaks-next/blob/main/styles/globals.css) looks like this:
-```CSS
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
+<img width="920" alt="styles_globals css" src="https://user-images.githubusercontent.com/97307321/176968408-84304ec3-da01-4a22-a034-6d0e76ca6634.png">
 
 ## Rendering Strategies
 
@@ -149,3 +53,16 @@ Following the collection of the data, most of it is stored in the `localStorage`
 ### Reasoning
 
 Given the current standards of having PWAs replace webpages, apps prefer to store userdata and other things in their own storage rather than asking an API for it every time it's needed. This makes switches between apps MUCH faster, saving up to 2s of loading on each page. Page changes feel smooth and natural without waiting for data to load and React Spring's styling.
+
+
+## Problem Solving
+
+Coming from the original vanilla React standpoint, there were a lot of things that, I hate to say it, *they just worked*. A lot of the problems come from the `users` functions. This would be anything after a user logged it. Not only was it lacking style-wise, it was not working correctly for the user roles. If a user was supposed to be an admin to have permissions to change info, everyone would get that option. Alongside a plethra of other bugs, new stuff needs to be usable, not a broken button.
+
+### Testimonial Sorting
+
+The simplest way to put this in my opinion, is to blame it on Javascript.
+
+<img width="920" alt="components_testimonialDisplay tsx" src="https://user-images.githubusercontent.com/97307321/176971375-623f10b5-de8d-4f15-8e97-161c530fa1fc.png">
+
+![image](https://user-images.githubusercontent.com/97307321/176969788-818c08c5-8533-4364-9f76-dc4db96c79a8.png)
