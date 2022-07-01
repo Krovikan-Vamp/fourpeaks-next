@@ -57,7 +57,7 @@ Given the current standards of having PWAs replace webpages, apps prefer to stor
 ### Examples
 
 <img width="920" alt="utils_auth ts" src="https://user-images.githubusercontent.com/97307321/176976272-7050bd6d-f3f9-4f5d-8cf6-fbcea834f36a.png">
-<img width="920" alt="components_physicianStats tsx" src="https://user-images.githubusercontent.com/97307321/176976278-2f99ca98-d6c7-4cfc-88e6-302b6cd85814.png">
+<img width="920" alt="components_physicianStats tsx (1)" src="https://user-images.githubusercontent.com/97307321/176976594-604767bb-2fdc-4fa9-9adb-c3ab0fa8d53e.png">
 
 
 ## Problem Solving
