@@ -25,21 +25,25 @@ const TestimonialDisplay = () => {
     useEffect(() => {
         sessionStorage.getItem('testimonials') === null ? getTestimonials() : setTestimonials(JSON.parse(sessionStorage.getItem('testimonials')));
     }, [])
-    
+
     const choose = (options) => {
         return options[Math.floor(Math.random() * options.length)];
     }
     // Changesh it
-    const arr1 = testimonials.map(test => { console.log(test); return { ...test, date: new Date(test.fields.date_M_Y.stringValue) } })
-    arr1.sort((a, b) => { return Number(new Date(a.date)) - Number(new Date(b.date)) })
-
+    // Create two arrays reflecting the testimonials
+    const arr1 = testimonials.map(test => {
+        return { ...test, date: new Date(test.fields.date_M_Y.stringValue) }
+    })
+    // Create the second one as a new `Set` of unique months
     const months = [...new Set(testimonials.map((o) => o.fields.date_M_Y.stringValue))]
-    months.sort((a, b) => { return Number(new Date(b)) - Number(new Date(a)) })
 
-    const trails = useTrail(months.length, {
-        from: { opacity: 0, transform: 'translateY(100px)' },
-        to: { opacity: 1, transform: 'translateY(0)' },
-    });
+    // Sort them by date and descending order
+    arr1.sort((a, b) => {
+        return Number(new Date(a.date)) - Number(new Date(b.date))
+    })
+    months.sort((a, b) => {
+        return Number(new Date(b)) - Number(new Date(a))
+    })
     return (<>
         <section className="text-gray-600 body-font overflow-hidden dark:bg-gray-700">
             <div className="container px-5 py-24 mx-auto">

@@ -84,11 +84,6 @@ const SvcAccordion = () => {
                                         <h2 className="svc-name title-font font-medium text-lg text-teal-500 dark:text-teal-400 mb-3">{prop.fields.full_name.stringValue} — {prop.fields.short_name.stringValue}</h2>
                                         <p className="mb-4">{prop.fields.description.stringValue}</p>
                                         <p className="text-right w-full -mt-4">
-                                            <a className="text-teal-500 inline-flex items-center group hover:cursor-pointer" target="_blank" rel='noreferrer' href={`https://www.google.com/search?q=${prop.fields.full_name.stringValue}`}>Learn More
-                                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2 group-hover:translate-x-[3px] transition-all" viewBox="0 0 24 24">
-                                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                                </svg>
-                                            </a>
                                         </p>
                                     </div>
                                 </div>
