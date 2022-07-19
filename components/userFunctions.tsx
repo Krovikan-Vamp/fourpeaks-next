@@ -1,9 +1,9 @@
 import Router from 'next/router';
 import Head from 'next/head';
 import { UserInfo } from '../utils/interfaces.ts';
-import { getCookie } from '../utils/cookies.ts';
+import React from 'react';
 import Link from 'next/link';
-import { config, useSpring, useTrail, animated } from 'react-spring';
+import { useSpring, useTrail, animated } from 'react-spring';
 
 const UserFunctions = () => {
     let user: UserInfo | null = null;
@@ -74,8 +74,8 @@ const UserFunctions = () => {
                                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Physician Contact Information</h1>
                                 <p className="leading-relaxed mb-3">View the physician contact information that has been collected with Speckles, the medical records software.</p>
                                 <Link href="/users/physicians">
-                                    <a className="text-teal-500 inline-flex items-center">View Contact Information
-                                        <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                    <a className="group text-teal-500 inline-flex items-center">View Contact Information
+                                        <svg className="group-hover:translate-x-1 transition-all w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="M5 12h14"></path>
                                             <path d="M12 5l7 7-7 7"></path>
                                         </svg>
@@ -101,8 +101,8 @@ const UserFunctions = () => {
                                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Add Patient Testimonials</h1>
                                 <p className="leading-relaxed mb-3">Add patient testimonials as requested per administration after choosing month and year. </p>
                                 <Link href="/users/testimonial_upload">
-                                    <a className="text-teal-500 inline-flex items-center">Add Testimonial
-                                        <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                    <a className="group text-teal-500 inline-flex items-center">Add Testimonial
+                                        <svg className="group-hover:translate-x-1 transition-all w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="M5 12h14"></path>
                                             <path d="M12 5l7 7-7 7"></path>
                                         </svg>
@@ -126,9 +126,9 @@ const UserFunctions = () => {
                             <div className="transition-all hover:-translate-y-3 hover:shadow-md h-full bg-gray-200 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
                                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">INFORMATION</h2>
                                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Manage About Information</h1>
-                                <p className="leading-relaxed mb-3">Change information available on the <Link href="/about">About</Link> page.</p>
-                                <a className="text-teal-500 inline-flex items-center">Learn More
-                                    <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                <p className="leading-relaxed mb-3">Change information available on the <Link href="/about"><span className="text-teal-500 hover:cursor-pointer">About</span></Link> page. This page contains important information regarding the staff , services, and programs of the practice.</p>
+                                <a className="group text-teal-500 inline-flex items-center"><Link href="/users/manage/about">Manage About</Link>
+                                    <svg className="group-hover:translate-x-1 transition-all w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                         <path d="M5 12h14"></path>
                                         <path d="M12 5l7 7-7 7"></path>
                                     </svg>
@@ -154,9 +154,9 @@ const UserFunctions = () => {
                             <div className="transition-all hover:-translate-y-3 hover:shadow-md h-full bg-gray-200 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
                                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">INFORMATION</h2>
                                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Manage Paperwork Information</h1>
-                                <p className="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-                                <a className="text-teal-500 inline-flex items-center">Learn More
-                                    <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                <p className="leading-relaxed mb-3">Change documents, descriptions, and more regarding the paperwork for patients.</p>
+                                <a className="group text-teal-500 inline-flex items-center"><Link href="/users/manage/paperwork">Manage Paperwork</Link>
+                                    <svg className="group-hover:translate-x-1 transition-all w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                         <path d="M5 12h14"></path>
                                         <path d="M12 5l7 7-7 7"></path>
                                     </svg>
@@ -180,9 +180,9 @@ const UserFunctions = () => {
                             <div className="transition-all hover:-translate-y-3 hover:shadow-md h-full bg-gray-200 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
                                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">INFORMATION</h2>
                                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Manage Services Information</h1>
-                                <p className="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-                                <a className="text-teal-500 inline-flex items-center">Learn More
-                                    <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                <p className="leading-relaxed mb-3">Change the services and descriptions provided by Four Peaks Surgery Center.</p>
+                                <a className="group text-teal-500 inline-flex items-center"><Link href="/users/manage/services">Manage Services</Link>
+                                    <svg className="group-hover:translate-x-1 transition-all w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                         <path d="M5 12h14"></path>
                                         <path d="M12 5l7 7-7 7"></path>
                                     </svg>
@@ -206,9 +206,9 @@ const UserFunctions = () => {
                             <div className="transition-all hover:-translate-y-3 hover:shadow-md h-full bg-gray-200 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
                                 <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">INFORMATION</h2>
                                 <h1 className="title-font sm:text-2xl text-xl font-medium text-gray-900 mb-3">Manage Surgeon Information</h1>
-                                <p className="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-                                <a className="text-teal-500 inline-flex items-center">Learn More
-                                    <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                <p className="leading-relaxed mb-3">Change the information available on the Surgeons page. Add, remove, and update surgeon information.</p>
+                                <a className="group text-teal-500 inline-flex items-center"><Link href="/users/manage/surgeons">Manage Surgeons</Link>
+                                    <svg className="group-hover:translate-x-1 transition-all w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                         <path d="M5 12h14"></path>
                                         <path d="M12 5l7 7-7 7"></path>
                                     </svg>

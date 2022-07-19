@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useTrail, animated, config } from 'react-spring';
+import React from 'react';
 
 const TestimonialDisplay = () => {
     const [loading, setLoading] = useState(false);
@@ -27,7 +28,7 @@ const TestimonialDisplay = () => {
     }, [])
 
     const choose = (options) => {
-        return options[Math.floor(Math.random() * options.length)];
+        return options[~~(Math.random() * options.length)];
     }
     // Changesh it
     // Create two arrays reflecting the testimonials
@@ -44,6 +45,12 @@ const TestimonialDisplay = () => {
     months.sort((a, b) => {
         return Number(new Date(b)) - Number(new Date(a))
     })
+
+    const trails = useTrail(months.length, {
+        from: { opacity: 0, transform: 'translateY(100px)' },
+        to: { opacity: 1, transform: 'translateY(0)' },
+    });
+
     return (<>
         <section className="text-gray-600 body-font overflow-hidden dark:bg-gray-700">
             <div className="container px-5 py-24 mx-auto">
