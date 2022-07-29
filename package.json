@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@firebase/firestore": "^3.4.11",
+    "@firebase/firestore": "^3.4.12",
     "@react-spring/parallax": "^9.4.5",
     "axios": "^0.27.2",
     "firebase": "^9.8.3",
