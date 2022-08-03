@@ -19,7 +19,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-firebase-hooks": "^5.0.3",
-    "react-spring": "^9.4.5",
+    "react-spring": "^9.5.0",
     "react-strap": "^0.0.1",
     "reactstrap": "^9.1.1"
   },
