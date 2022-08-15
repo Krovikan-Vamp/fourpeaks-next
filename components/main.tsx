@@ -45,7 +45,7 @@ export const HeroMain = () => {
                             </div>
                             <div>
                                 <h2 className="text-black dark:text-white text-3xl font-semibold">Hear it for yourself...</h2>
-                                <p className="mt-2 text-gray-600 dark:text-stone-300">AMAZING staff! This was my top experience at Four Peaks. Treated very well + would highly recommend to others. Also wanted to give kudos to your facility and staff!</p>
+                                <p className="mt-2 text-gray-600 dark:text-stone-300">‹‹ AMAZING staff! This was my top experience at Four Peaks. Treated very well + would highly recommend to others. Also wanted to give kudos to your facility and staff! ››</p>
                             </div>
                             <div className="flex justify-end mt-4">
                                 <Link href="/testimonials"><a className="transition-all text-xl font-medium text-teal-400 hover:text-teal-500">Hear More</a></Link>

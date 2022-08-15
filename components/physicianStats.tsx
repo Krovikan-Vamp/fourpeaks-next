@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { firestore, app } from '../utils/firebase.ts';
+import { firestore } from '../utils/firebase.ts';
 import { sleep } from '../utils/sleep.ts';
 import { collection, getDocs, query } from "firebase/firestore"
 import { useSpring, animated, config } from "react-spring";
+import React from 'react';
 
 const PhysicianInformation = () => {
     const [loading, setLoading] = useState(true);
@@ -81,8 +82,14 @@ const PhysicianInformation = () => {
             from: { opacity: 0 }, to: { opacity: 1 }, config: config.molasses
         }
     )
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <div className="min-h-screen text-center text-lg">Loading...</div>;
 
+    function refresh() {
+        setLoading(true);
+        localStorage.removeItem('physicians');
+        getPhysicians();
+
+    }
     if (typeof window !== 'undefined') {
         return (<>
             <section className="dark:text-gray-200 dark:bg-gray-700 text-gray-600 body-font min-h-screen">
@@ -92,6 +99,7 @@ const PhysicianInformation = () => {
                         <p className="lg:w-2/3 mx-auto leading-relaxed text-base dark:text-gray-400">See the information collected via Speckles, the medical records software.</p>
                         <div className="relative mt-4 -mb-4 dark:bg-gray-700">
                             <input type="text" id='search' className="dark:bg-gray-600 dark:shadow-gray-500 bg-gray-50 shadow-md h-14 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none" placeholder='Press "/" to jump to search' />
+                            <button onClick={() => { refresh() }} className='transition-all ml-5 border-2 p-2 rounded-md border-teal-100 bg-teal-50 hover:bg-teal-100 hover:border-teal:300 active:bg-teal-50 active:border-teal-100'>Refresh Info</button>
                         </div>
                     </div>
 
@@ -109,15 +117,6 @@ const PhysicianInformation = () => {
                                                 <li className="phoneInfo">Phone: {physician.phone.map(char => String.fromCharCode(char - 25))}</li>
                                                 <li className="faxInfo">Fax: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{physician.fax.map(char => String.fromCharCode(char - 25))}</li>
                                             </ul>
-
-                                            {/* Footer */}
-                                            {/* <p className="text-right w-full -mt-4">
-                                                <a className="text-teal-500 inline-flex items-center group hover:cursor-pointer" target="_blank" rel='noreferrer' href={``}>Learn More
-                                                    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2 group-hover:translate-x-[3px] transition-all" viewBox="0 0 24 24">
-                                                        <path d="M5 12h14M12 5l7 7-7 7"></path>
-                                                    </svg>
-                                                </a>
-                                            </p> */}
                                         </div>
                                     </div>
                                 </animated.div>

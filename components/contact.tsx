@@ -1,4 +1,5 @@
 import { useTrail, useSpring, animated, config } from 'react-spring';
+import React from 'react';
 
 const Contact = () => {
     const trails = useTrail(3, {
